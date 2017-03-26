@@ -8,7 +8,7 @@ import { getControl, inArray, isDefined } from '../../library/utilities/index';
   selector: 'material-number-widget',
   template: `
     <section [class]="options?.htmlClass">
-      <md-input #inputControl
+      <input mdInput #inputControl
         [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
         [attr.max]="options?.maximum"
         [attr.min]="options?.minimum"
@@ -37,7 +37,6 @@ import { getControl, inArray, isDefined } from '../../library/utilities/index';
           align="end">{{options?.description}}</md-hint>
         <md-hint *ngIf="!options?.description && options?.placeholder && !formControl?.dirty"
           align="end">{{options?.placeholder}}</md-hint>
-      </md-input>
       {{layoutNode?.type === 'range' ? controlValue : ''}}
     </section>`,
     styles: [`md-input { margin-top: 6px; }`],

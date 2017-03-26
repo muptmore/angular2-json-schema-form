@@ -6,7 +6,7 @@ import { JsonSchemaFormService } from '../../library/json-schema-form.service';
 @Component({
   selector: 'material-textarea-widget',
   template: `
-    <md-textarea #inputControl
+    <textarea mdInput #inputControl
       [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
       [attr.list]="'control' + layoutNode?._id + 'Autocomplete'"
       [attr.maxlength]="options?.maxLength"
@@ -30,7 +30,7 @@ import { JsonSchemaFormService } from '../../library/json-schema-form.service';
         align="end">{{options?.description}}</md-hint>
       <md-hint *ngIf="options?.placeholder && !formControl?.dirty"
         align="end">{{options?.placeholder}}</md-hint>
-    </md-textarea>`,
+    </textarea>`,
 })
 export class MaterialTextareaComponent implements OnInit {
   private formControl: AbstractControl;

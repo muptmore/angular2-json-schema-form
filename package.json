@@ -47,7 +47,7 @@
     "@angular/compiler": "2.x",
     "@angular/core": "2.x",
     "@angular/forms": "2.x",
-    "@angular/material": "2.0.0-beta.1",
+    "@angular/material": "2.0.0-beta.2",
     "@angular/platform-browser": "2.x",
     "@angular/platform-browser-dynamic": "2.x",
     "@types/lodash": "4.x",
