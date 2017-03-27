@@ -6,31 +6,35 @@ import { JsonSchemaFormService } from '../../library/json-schema-form.service';
 @Component({
   selector: 'material-textarea-widget',
   template: `
-    <textarea mdInput #inputControl
-      [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
-      [attr.list]="'control' + layoutNode?._id + 'Autocomplete'"
-      [attr.maxlength]="options?.maxLength"
-      [attr.minlength]="options?.minLength"
-      [attr.pattern]="options?.pattern"
-      [attr.required]="options?.required"
-      [class]="options?.fieldHtmlClass"
-      [disabled]="controlDisabled"
-      [id]="'control' + layoutNode?._id"
-      [name]="controlName"
-      [placeholder]="options?.title"
-      [readonly]="options?.readonly ? 'readonly' : null"
-      [style.width]="'100%'"
-      [value]="controlValue"
-      (input)="updateValue($event)">
-      <span *ngIf="options?.fieldAddonLeft"
-        md-prefix>{{options?.fieldAddonLeft}}</span>
-      <span *ngIf="options?.fieldAddonRight"
-        md-suffix>{{options?.fieldAddonRight}}</span>
-      <md-hint *ngIf="options?.description"
-        align="end">{{options?.description}}</md-hint>
-      <md-hint *ngIf="options?.placeholder && !formControl?.dirty"
-        align="end">{{options?.placeholder}}</md-hint>
-    </textarea>`,
+    <div layout="row" [class]="options?.htmlClass">
+      <md-input-container flex>
+        <textarea mdInput #inputControl
+          [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
+          [attr.list]="'control' + layoutNode?._id + 'Autocomplete'"
+          [attr.maxlength]="options?.maxLength"
+          [attr.minlength]="options?.minLength"
+          [attr.pattern]="options?.pattern"
+          [attr.required]="options?.required"
+          [class]="options?.fieldHtmlClass"
+          [disabled]="controlDisabled"
+          [id]="'control' + layoutNode?._id"
+          [name]="controlName"
+          [placeholder]="options?.title"
+          [readonly]="options?.readonly ? 'readonly' : null"
+          [style.width]="'100%'"
+          [value]="controlValue"
+          (input)="updateValue($event)">
+          <span *ngIf="options?.fieldAddonLeft"
+            md-prefix>{{options?.fieldAddonLeft}}</span>
+          <span *ngIf="options?.fieldAddonRight"
+            md-suffix>{{options?.fieldAddonRight}}</span>
+          <md-hint *ngIf="options?.description"
+            align="end">{{options?.description}}</md-hint>
+          <md-hint *ngIf="options?.placeholder && !formControl?.dirty"
+            align="end">{{options?.placeholder}}</md-hint>
+        </textarea>
+      </md-input-container>
+    </div>`,
 })
 export class MaterialTextareaComponent implements OnInit {
   private formControl: AbstractControl;

@@ -29,8 +29,10 @@ import { JsonSchemaFormService } from '../../library/json-schema-form.service';
             md-prefix>{{options?.fieldAddonLeft}}</span>
           <span *ngIf="options?.fieldAddonRight"
             md-suffix>{{options?.fieldAddonRight}}</span>
-          <md-hint *ngIf="options?.description && !(options?.placeholder && !formControl?.dirty)">{{options?.description}}</md-hint>
-          <md-hint *ngIf="!options?.description && options?.placeholder && !formControl?.dirty">{{options?.placeholder}}</md-hint>
+          <md-hint *ngIf="options?.description"
+            align="end">{{options?.description}}</md-hint>
+          <md-hint *ngIf="options?.placeholder && !formControl?.dirty"
+            align="end">{{options?.placeholder}}</md-hint>
       </md-input-container>
     </div>`,
     styles: [`mdInput { margin-top: 6px; }`],
