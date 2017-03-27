@@ -14,17 +14,21 @@ import { JsonPointer } from '../../library/utilities/index';
           (click)="select(i)">
           <span *ngIf="showAddTab || item.type !== '$ref'"
             [innerHTML]="setTitle(item, i)"></span>
+          <span *ngIf="showRemoveTab && item.type !== '$ref'">
+            <button md-icon-button (click)="removeItem(i)"><md-icon >delete</md-icon></button>
+          </span>
         </a>
     </nav>
 
     <div *ngFor="let layoutItem of layoutNode?.items; let i = index"
       [class]="options?.htmlClass">
-
+      
       <select-framework-widget *ngIf="selectedItem === i"
         [class]="options?.fieldHtmlClass + ' ' + options?.activeClass + ' ' + options?.style?.selected"
         [dataIndex]="layoutNode?.dataType === 'array' ? (dataIndex || []).concat(i) : dataIndex"
         [layoutIndex]="(layoutIndex || []).concat(i)"
-        [layoutNode]="layoutItem"></select-framework-widget>
+        [layoutNode]="layoutItem">
+</select-framework-widget>
 
     </div>`,
   styles: [`a { cursor: pointer; }`],
@@ -34,6 +38,7 @@ export class MaterialTabsComponent implements OnInit {
   private itemCount: number;
   private selectedItem: number = 0;
   private showAddTab: boolean = true;
+  private showRemoveTab: boolean = true;
   @Input() formID: number;
   @Input() layoutNode: any;
   @Input() layoutIndex: number[];
@@ -74,5 +79,21 @@ export class MaterialTabsComponent implements OnInit {
 
   private setTitle(item: any = null, index: number = null): string {
     return this.jsf.setTitle(this, item, index);
+  }
+
+  private removeItem(index) {
+    if(index < this.layoutNode.items.length ){
+      this.jsf.removeItem({
+        formID: this.formID,
+        layoutNode: this.layoutNode.items[index],
+        layoutIndex: this.layoutIndex.concat(index),
+        dataIndex: this.dataIndex.concat(index)
+      });
+      this.itemCount = this.layoutNode.items.length - 1;
+    }
+
+    this.updateControl();
+
+    this.selectedItem = 0;
   }
 }
