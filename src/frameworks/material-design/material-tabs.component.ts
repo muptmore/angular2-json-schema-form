@@ -14,7 +14,7 @@ import { JsonPointer } from '../../library/utilities/index';
           (click)="select(i)">
           <span *ngIf="showAddTab || item.type !== '$ref'"
             [innerHTML]="setTitle(item, i)"></span>
-          <span *ngIf="showRemoveTab && item.type !== '$ref'">
+          <span *ngIf="showRemoveTab && layoutNode?.arrayItem && item.type !== '$ref'">
             <button md-icon-button (click)="removeItem(i)"><md-icon >delete</md-icon></button>
           </span>
         </a>
