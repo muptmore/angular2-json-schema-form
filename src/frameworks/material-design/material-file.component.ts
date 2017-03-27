@@ -7,33 +7,12 @@ import { JsonSchemaFormService } from '../../library/json-schema-form.service';
   selector: 'material-file-widget',
   template: `
     <div layout="row" [class]="options?.htmlClass">
-      <md-input-container flex>
-        <input mdInput #inputControl
-          [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
-          [attr.list]="'control' + layoutNode?._id + 'Autocomplete'"
-          [attr.maxlength]="options?.maxLength"
-          [attr.minlength]="options?.minLength"
-          [attr.pattern]="options?.pattern"
-          [required]="options?.required"
-          [class]="options?.fieldHtmlClass"
-          [disabled]="controlDisabled"
-          [id]="'control' + layoutNode?._id"
-          [name]="controlName"
-          [placeholder]="options?.title"
-          [readonly]="options?.readonly ? 'readonly' : null"
-          [style.width]="'100%'"
-          [type]="layoutNode?.type"
-          [value]="controlValue"
-          (input)="updateValue($event)">
-          <span *ngIf="options?.fieldAddonLeft"
-            md-prefix>{{options?.fieldAddonLeft}}</span>
-          <span *ngIf="options?.fieldAddonRight"
-            md-suffix>{{options?.fieldAddonRight}}</span>
-          <md-hint *ngIf="options?.description"
-            align="end">{{options?.description}}</md-hint>
-          <md-hint *ngIf="options?.placeholder && !formControl?.dirty"
-            align="end">{{options?.placeholder}}</md-hint>
-      </md-input-container>
+      <td-file-upload #singleFileUpload (select)="selectEvent($event)" (upload)="uploadEvent($event)" [disabled]="disabled">
+        <md-icon>file_upload</md-icon><span>{{ singleFileUpload.files?.name }}</span>
+        <template td-file-input-label>
+          <md-icon>attach_file</md-icon><span>Choose a file...</span>
+        </template>
+      </td-file-upload>
     </div>`,
 })
 export class MaterialFileComponent implements OnInit {
@@ -48,6 +27,10 @@ export class MaterialFileComponent implements OnInit {
   @Input() layoutIndex: number[];
   @Input() dataIndex: number[];
 
+
+  private fileSelectMsg: string = 'No file selected yet.';
+  private fileUploadMsg: string = 'No file uploaded yet.';
+
   constructor(
     private jsf: JsonSchemaFormService
   ) { }
@@ -60,4 +43,12 @@ export class MaterialFileComponent implements OnInit {
   private updateValue(event) {
     this.jsf.updateValue(this, event.target.value);
   }
+
+  selectEvent(file: File): void {
+    this.fileSelectMsg = file.name;
+  };
+
+  uploadEvent(file: File): void {
+    this.fileUploadMsg = file.name;
+  };
 }
