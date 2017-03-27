@@ -6,7 +6,7 @@ import { JsonSchemaFormService } from '../../library/json-schema-form.service';
 @Component({
   selector: 'material-input-widget',
   template: `
-    <div layout="row" mdTooltip="options?.description" [mdTooltipPosition]="above" [class]="options?.htmlClass">
+    <div layout="row" mdTooltip="{{options?.description}}" [mdTooltipPosition]="above" [class]="options?.htmlClass">
       <md-input-container flex>
         <input mdInput #inputControl
           [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
