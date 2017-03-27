@@ -6,7 +6,7 @@ import { JsonSchemaFormService } from '../../library/json-schema-form.service';
 @Component({
   selector: 'material-input-widget',
   template: `
-    <section [class]="options?.htmlClass">
+    <div layout="row" [class]="options?.htmlClass">
       <md-input-container flex>
         <input mdInput #inputControl
           [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
@@ -34,7 +34,7 @@ import { JsonSchemaFormService } from '../../library/json-schema-form.service';
           <md-hint *ngIf="!options?.description && options?.placeholder && !formControl?.dirty"
             align="end">{{options?.placeholder}}</md-hint>
       </md-input-container>
-    </section>`,
+    </div>`,
     styles: [`mdInput { margin-top: 6px; }`],
 })
 export class MaterialInputComponent implements OnInit {
