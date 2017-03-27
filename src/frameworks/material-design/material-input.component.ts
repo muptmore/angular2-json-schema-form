@@ -24,9 +24,7 @@ import { JsonSchemaFormService } from '../../library/json-schema-form.service';
           [style.width]="'100%'"
           [type]="layoutNode?.type"
           [value]="controlValue"
-          (input)="updateValue($event)"
-          mdTooltip="{{options?.description}}"
-          mdTooltipPosition="'above'">
+          (input)="updateValue($event)">
           <span *ngIf="options?.fieldAddonLeft"
             md-prefix>{{options?.fieldAddonLeft}}</span>
           <span *ngIf="options?.fieldAddonRight"
