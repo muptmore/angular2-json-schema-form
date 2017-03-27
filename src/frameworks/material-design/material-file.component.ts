@@ -7,7 +7,7 @@ import { JsonSchemaFormService } from '../../library/json-schema-form.service';
   selector: 'material-file-widget',
   template: `
     <div layout="row" [class]="options?.htmlClass">
-      <td-file-upload #singleFileUpload (select)="selectEvent($event)" (upload)="uploadEvent($event)" [disabled]="disabled">
+      <td-file-upload #singleFileUpload (select)="selectEvent($event)" (upload)="uploadEvent($event)" [disabled]="controlDisabled">
         <md-icon>file_upload</md-icon><span>{{ singleFileUpload.files?.name }}</span>
         <template td-file-input-label>
           <md-icon>attach_file</md-icon><span>Choose a file...</span>
