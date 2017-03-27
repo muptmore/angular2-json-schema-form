@@ -7,31 +7,33 @@ import { JsonSchemaFormService } from '../../library/json-schema-form.service';
   selector: 'material-input-widget',
   template: `
     <section [class]="options?.htmlClass">
-      <input mdInput #inputControl
-        [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
-        [attr.list]="'control' + layoutNode?._id + 'Autocomplete'"
-        [attr.maxlength]="options?.maxLength"
-        [attr.minlength]="options?.minLength"
-        [attr.pattern]="options?.pattern"
-        [required]="options?.required"
-        [class]="options?.fieldHtmlClass"
-        [disabled]="controlDisabled"
-        [id]="'control' + layoutNode?._id"
-        [name]="controlName"
-        [placeholder]="options?.title"
-        [readonly]="options?.readonly ? 'readonly' : null"
-        [style.width]="'100%'"
-        [type]="layoutNode?.type"
-        [value]="controlValue"
-        (input)="updateValue($event)">
-        <span *ngIf="options?.fieldAddonLeft"
-          md-prefix>{{options?.fieldAddonLeft}}</span>
-        <span *ngIf="options?.fieldAddonRight"
-          md-suffix>{{options?.fieldAddonRight}}</span>
-        <md-hint *ngIf="options?.description && !(options?.placeholder && !formControl?.dirty)"
-          align="end">{{options?.description}}</md-hint>
-        <md-hint *ngIf="!options?.description && options?.placeholder && !formControl?.dirty"
-          align="end">{{options?.placeholder}}</md-hint>
+      <md-input-container flex>
+        <input mdInput #inputControl
+          [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
+          [attr.list]="'control' + layoutNode?._id + 'Autocomplete'"
+          [attr.maxlength]="options?.maxLength"
+          [attr.minlength]="options?.minLength"
+          [attr.pattern]="options?.pattern"
+          [required]="options?.required"
+          [class]="options?.fieldHtmlClass"
+          [disabled]="controlDisabled"
+          [id]="'control' + layoutNode?._id"
+          [name]="controlName"
+          [placeholder]="options?.title"
+          [readonly]="options?.readonly ? 'readonly' : null"
+          [style.width]="'100%'"
+          [type]="layoutNode?.type"
+          [value]="controlValue"
+          (input)="updateValue($event)">
+          <span *ngIf="options?.fieldAddonLeft"
+            md-prefix>{{options?.fieldAddonLeft}}</span>
+          <span *ngIf="options?.fieldAddonRight"
+            md-suffix>{{options?.fieldAddonRight}}</span>
+          <md-hint *ngIf="options?.description && !(options?.placeholder && !formControl?.dirty)"
+            align="end">{{options?.description}}</md-hint>
+          <md-hint *ngIf="!options?.description && options?.placeholder && !formControl?.dirty"
+            align="end">{{options?.placeholder}}</md-hint>
+      </md-input-container>
     </section>`,
     styles: [`mdInput { margin-top: 6px; }`],
 })
