@@ -6,7 +6,7 @@ import { JsonSchemaFormService } from '../../library/json-schema-form.service';
 @Component({
   selector: 'material-input-widget',
   template: `
-    <div layout="row" mdTooltip="{{options?.description}}" mdTooltipPosition="above" [class]="options?.htmlClass">
+    <div layout="row" [class]="options?.htmlClass">
       <md-input-container flex>
         <input mdInput #inputControl
           [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
@@ -24,7 +24,8 @@ import { JsonSchemaFormService } from '../../library/json-schema-form.service';
           [style.width]="'100%'"
           [type]="layoutNode?.type"
           [value]="controlValue"
-          (input)="updateValue($event)">
+          (input)="updateValue($event)"
+          mdTooltip="{{options?.description}}">
           <span *ngIf="options?.fieldAddonLeft"
             md-prefix>{{options?.fieldAddonLeft}}</span>
           <span *ngIf="options?.fieldAddonRight"
