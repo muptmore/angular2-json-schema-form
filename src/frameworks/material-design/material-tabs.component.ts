@@ -12,9 +12,7 @@ import { JsonPointer } from '../../library/utilities/index';
           md-tab-link
           [active]="selectedItem === i"
           (click)="select(i)">
-          <span *ngIf="item.type === '$ref'"
-                [innerHTML]="setTitle(item, i)"></span>
-          <span *ngIf="showAddTab && options?.add && item.type !== '$ref'"
+          <span *ngIf="(showAddTab && options?.add) || item.type !== '$ref'"
             [innerHTML]="setTitle(item, i)"></span>
           <span *ngIf="showRemoveTab && item?.arrayItem && options?.remove && item.type !== '$ref'">
             <button md-icon-button (click)="removeItem(i)"><md-icon >delete</md-icon></button>
